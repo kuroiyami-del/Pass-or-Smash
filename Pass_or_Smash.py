@@ -41,4 +41,6 @@ boton_pass.pack(side="right", padx=20, pady=20)
 
 mostrarPokemon(index, pokemones, label_imagen, label_nombre)
 
+
+
 ventana.mainloop()
