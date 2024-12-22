@@ -7,7 +7,7 @@ import random
 
 # Funcion para tener pokemones random
 def cargarPokemonesRandom(cantidad=10):
-    lista_pokemones = []
+    pokelista = []
 
     URL = "https://pokeapi.co/api/v2/pokemon/"
 
@@ -20,9 +20,19 @@ def cargarPokemonesRandom(cantidad=10):
         nombre = datos["forms"][0]["name"]
         imagen_url = datos["sprites"]["other"]["official-artwork"]["front_default"]
 
-        lista_pokemones.append({"nombre": nombre, "imagen": imagen_url})
+        pokelista.append({"nombre": nombre, "imagen": imagen_url})
 
-    return lista_pokemones
+        pokelista_limpia = []
+        visto = set()
+
+        for diccionario in pokelista:
+            tupla_dicc = tuple(diccionario.items())
+
+            if tupla_dicc not in visto:
+                pokelista_limpia.append(diccionario)
+                visto.add(tupla_dicc)
+
+    return pokelista_limpia
 
 
 def mostrarPokemon(index, pokemones, label_imagen, label_nombre):
@@ -44,8 +54,8 @@ def mostrarPokemon(index, pokemones, label_imagen, label_nombre):
     label_nombre.config(text=pokemon["nombre"].capitalize())
 
 
-def cargarPokemonesOrden(cantidad=10):
-    lista_pokemones = []
+def cargarPokemonesOrden(cantidad=100):
+    pokelista = []
 
     URL = "https://pokeapi.co/api/v2/pokemon/"
 
@@ -57,6 +67,19 @@ def cargarPokemonesOrden(cantidad=10):
         nombres = datos["forms"][0]["name"]
         imagen_url = datos["sprites"]["other"]["official-artwork"]["front_default"]
 
-        lista_pokemones.append({"nombre": nombres, "imagen": imagen_url})
+        pokelista.append({"nombre": nombres, "imagen": imagen_url})
 
-    return lista_pokemones
+        pokelista_limpia = []
+        visto = set()
+
+        for diccionario in pokelista:
+            tupla_dicc = tuple(diccionario.items())
+
+            if tupla_dicc not in visto:
+                pokelista_limpia.append(diccionario)
+                visto.add(tupla_dicc)
+
+    return pokelista_limpia
+
+
+
